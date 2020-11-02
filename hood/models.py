@@ -11,7 +11,11 @@ class Hood(models.Model):
     adder = models.ForeignKey(User, on_delete = models.CASCADE, related_name ="hoods")
 
     def create_neighbourhood(self,name,location,occupants,adder):
-        new_neighbourhood= Hood.objects.create
+        new_neighbourhood= Hood.objects.create(name=name,location=location,occupants=occupants,adder=adder)
+        return new_neighbourhood
+
+    def delete_neighbourhood(self):
+        self.delete()
 
     def __str__(self):
         return self.name

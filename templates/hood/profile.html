@@ -3,7 +3,7 @@
 
 
 {% block content %}
-{% if profile %}
+{% if current_user.userprofle %}
 <div class="container">
     <div class="row">
         <div class="col-md-8">
@@ -12,10 +12,12 @@
                     <h2>{{current_user.username}}</h2>
                 </div>
                 <div class="panel-body">
-                    <img src="{{current_user.userprofile.avatar.url}}" alt="dpic" class="rounded-circle" width="150" height="150">
+                    <img src="{{current_user.userprofle.avatar.url}}" alt="dpic" class="rounded-circle" width="150" height="150">
                     {% autoescape on %}
-                    <h3>{{user.profile.bio | safe}}</h3>
+                    <h3> Your bio: {{current_user.userprofle.bio | safe}}</h3>
                     {% endautoescape%}
+                    <h3>Home: {{current_user.userprofle.hood}}</h3>
+
                 </div>
                 <div class="panel-footer" style="background-color: #ff006e;">
                     <h4>{{current_user.email}}</h4>
