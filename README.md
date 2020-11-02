@@ -32,6 +32,8 @@ Open the webpage on your browser using the live link provided.
 * To add a business, click the add business tab on the navbaar
 
 * If you do not have a profile, click on the add profile link in the dropdown and fill the form to add your profile
+* Click on view profile from the same dropdown to see your profile
+* * ![Alt text](./static/images/profile.png?raw=true "Optional Title")
 * Once done, click on the logout tab to logout
 ## Contacts
 Feel free to contact me at machokadaisy25@gmail.com. For any contributions, please visit https://github.com/MachokaDaisy/py-go.git
