@@ -20,5 +20,19 @@ class AddBusinessForm(forms.ModelForm):
     class Meta:
         model=Business
         exclude=['owner']
+
+class AddPostForm(forms.ModelForm):
+    image= CloudinaryFileField(
+        options = {
+            'crop':'thumb',
+            'width':300,
+            'height':300,
+            'folder':'avatars'
+        },
+        required=False
+    )
+    class Meta:
+        model=Post
+        exclude=['poster']
         
 
