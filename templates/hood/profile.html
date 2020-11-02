@@ -1,0 +1,33 @@
+{% extends 'hood/base.html' %}
+{% load cloudinary %}
+
+
+{% block content %}
+{% if profile %}
+<div class="container">
+    <div class="row">
+        <div class="panel panel-default">
+            <div class="panel-heading" style="background-color: #ff006e;">
+                <h2>{{current_user.username}}</h2>
+            </div>
+            <div class="panel-body">
+                <img src="{{current_user.userprofile.avatar.url}}" alt="dpic" class="rounded-circle" width="150" height="150">
+                {% autoescape on %}
+                <h3>{{user.profile.bio | safe}}</h3>
+                {% endautoescape%}
+            </div>
+            <div class="panel-footer" style="background-color: #ff006e;">
+                <h4>{{current_user.email}}</h4>
+            </div>
+        </div>
+    </div>
+</div>
+{% else %}
+<div class="container">
+    <div class="row">
+        <h3>Hi {{current_user.username}}, You don't have a profile yet. <span><a href="url 'addprofile'">Add one</a></span></h3>
+    </div>
+</div>
+{% endif %}
+
+{% endblock %}
