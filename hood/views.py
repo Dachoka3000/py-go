@@ -64,7 +64,13 @@ def filterbusiness(request):
         return Business.objects.none()
     filter_list = Business.objects.all()
     business_filter = BusinessFilter(request.GET, queryset=filter_list)
-    return render(request,'searchbusiness.html',{"filter":business_filter})
+    return render(request,'hood/searchbusiness.html',{"filter":business_filter})
+
+@login_required(login_url='/accounts/login/')
+def posts(request,hood_id):
+    hood=Hood.objects.get(id=hood_id)
+    postups=hood.posts.all()
+    return render(request, 'hood/postarea.html',{"hood":hood,"postups":postups})
             
 
 # def addprofile(request):
