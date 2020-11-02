@@ -53,7 +53,10 @@ def addbusiness(request):
         form=AddBusinessForm()
     return render(request,'hood/addbusiness.html',{"current_user":current_user,"form":form})
 
-
+@login_required(login_url='/accounts/login/')
+def business(request):
+    businesses=Business.objects.all()
+    return render(request,'hood/business.html', {"businesses":businesses})
             
 
 # def addprofile(request):
