@@ -36,8 +36,20 @@ class Business(models.Model):
     def delete_business(self):
         self.delete()
     
-    # @classmethod
-    # def
+    @classmethod
+    def find_neighbourhoood(cls,neighbourhod_id):
+        found_neighbourhood=cls.objects.filter(id=neighbourhod_id)
+        return found_neighbourhood
+
+    @classmethod
+    def update_neighbourhood(cls,name,new_name):
+        hood=cls.objects.filter(name=name).update(name=new_name)
+        return hood
+
+    @classmethod
+    def update_occupants(cls,hood_id, new_occupants):
+        hood=cls.objects.filter(id=hood_id).update(occupants=new_occupants)
+        return hood
 
     def __str__(self):
         return self.name  
