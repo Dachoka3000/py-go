@@ -1,0 +1,38 @@
+{% extends 'hood/base.html' %}
+
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="card">
+            <div class="card-body">
+                <h2>{{hood.name}}</h2>
+                <h4>These are the emergency contacts for this region:</h4>
+                {% for contacter in contacters%}
+                <div class="panel-group">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h4>Police Contacts</h4>
+                        </div>
+                        <div class="panel-body">
+                            <h4>{{contacter.policenumber}}</h4>
+                            <h4>{{contacter.policemail}}</h4>
+                        </div>
+                    </div>
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h4>Hospital Contacts</h4>
+                        </div>
+                        <div class="panel-body">
+                            <h4>{{contacter.hospitalnumber}}</h4>
+                            <h4>{{contacter.hospitalmail}}</h4>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+                
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
