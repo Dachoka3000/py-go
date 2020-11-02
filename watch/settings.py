@@ -13,6 +13,7 @@ import os
 import dj_database_url
 from pathlib import Path
 from decouple import config,Csv
+import django_heroku
 import cloudinary
 import cloudinary.uploader
 import cloudinary.api
@@ -192,3 +193,5 @@ DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 # configuring the location for media
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+django_heroku.settings(locals())
