@@ -1,0 +1,24 @@
+{% extends 'hood/base.html' %}
+
+{% block content %}
+<div class="container">
+    <div class="row">
+        {% for hood in hoods%}
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-header">
+                    <h3>{{hood.name}} in {{hood.location}}</h3>
+                </div>
+                <div class="card-body">
+                    <h4>{{hood.occupants}} residents live here!</h4>
+                    <button class="btn btn-primary"><a href="{% url 'contacts' hood_id=hood.id%}" style="color: white;">View Contacts</a></button>
+                    <button class="btn btn-primary"><a href="{% url 'posts' hood_id=hood.id%}" style="color: white;">View Posts</a></button>
+                    <button class="btn btn-primary"><a href="{% url 'addpost' hood_id=hood.id%}" style="color: white;">Add a post</a></button>
+                </div>
+            </div>
+        </div>
+        {%endfor%}
+    </div>
+</div>
+
+{% endblock %}
