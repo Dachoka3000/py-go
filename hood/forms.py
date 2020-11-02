@@ -15,5 +15,10 @@ class AddProfileForm(forms.ModelForm):
     class Meta:
         model=Profile
         exclude=('user',)
+
+class AddBusinessForm(forms.ModelForm):
+    class Meta:
+        model=Business
+        exclude=['owner']
         
 
