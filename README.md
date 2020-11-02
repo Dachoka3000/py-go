@@ -12,7 +12,7 @@ This is  a web application that keeps users in the loop about what is happening 
 * Migrate database by running python3 manage.py migrate
 * Install dependencies by running pip install -r requirements.txt
 * Run python3 manage.py runserver to run the app locally
-* Run python3 manage.py test work to run tests
+* Run python3 manage.py test hood to run tests
 ## Technologies used
 * HTML,
 * CSS,
