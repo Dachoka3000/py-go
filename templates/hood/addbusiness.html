@@ -4,18 +4,21 @@
 {% block content %}
 <div class="container">
     <div class="row">
-        <div class="panel panel-default">
-            <div class="panel-heading">
-                <h2>Add A Business</h2>
-            </div>
-            <div class="panel-body">
-                <form action="{%url 'addbusiness' %}" method="post">
-                    {% csrf_token %}
-                    {{form|crispy}}
-                    <input type="submit" class="btn btn-sm btn-info" value="Save"/>
-                </form>
+        <div class="col-md-8">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h2>Add A Business</h2>
+                </div>
+                <div class="panel-body">
+                    <form action="{%url 'addbusiness' %}" method="post">
+                        {% csrf_token %}
+                        {{form|crispy}}
+                        <input type="submit" class="btn btn-sm btn-info" value="Save"/>
+                    </form>
+                </div>
             </div>
         </div>
+        
     </div>
 </div>
 

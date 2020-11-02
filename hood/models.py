@@ -10,6 +10,9 @@ class Hood(models.Model):
     occupants = models.IntegerField(null=True)
     adder = models.ForeignKey(User, on_delete = models.CASCADE, related_name ="hoods")
 
+    def create_neighbourhood(self,name,location,occupants,adder):
+        new_neighbourhood= Hood.objects.create
+
     def __str__(self):
         return self.name
 

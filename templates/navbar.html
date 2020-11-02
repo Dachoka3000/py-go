@@ -1,35 +1,35 @@
-<nav class="navbar " style="background-color: #ff006e;">
+<nav class="navbar " style="background-color: #ff006e; color: white;">
     <div class="container-fluid">
-      <div class="navbar-header">
+      <div class="navbar-header"> 
         <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
           <span class="sr-only">Toggle navigation</span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
+          <span class="icon-bar" style="background-color: white;"></span>
+          <span class="icon-bar" style="background-color: white;"></span>
+          <span class="icon-bar" style="background-color: white;"></span>
         </button>
         <a class="navbar-brand" href="{% url 'home'%}" style="color: white; font-family: 'Henny Penny',cursive;">NeighbourHood Watch</a>
       </div>
   
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1" style="color: white;">
         <ul class="nav navbar-nav">
-          <li ><a href="{% url 'home' %}">Home</a></li>
-          <li><a href="{% url 'about' %}">About</a></li>
+          <li ><a href="{% url 'home' %}" style="color: white;">Home</a></li>
+          <li><a href="{% url 'about' %}" style="color: white;">About</a></li>
           
         </ul>
         {%if user.is_authenticated%}
         
         <ul class="nav navbar-nav navbar-right" style="color: wheat;">
-            <li><a href="{%url 'business' %}">View Businesses</a></li>
-            <li><a href="{% url 'searchbusiness'%}">Search Businesses</a></li>
-            <li><a href="{%url 'addbusiness'%}">Upload Business</a></li>
+            <li><a href="{%url 'business' %}" style="color: white;">View Businesses</a></li>
+            <li><a href="{% url 'searchbusiness'%}" style="color: white;">Search Businesses</a></li>
+            <li><a href="{%url 'addbusiness'%}" style="color: white;">Upload Business</a></li>
             <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{user.username}} <span class="caret"></span></a>
+              <a href="#" class="dropdown-toggle" style="color: white;" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{user.username}} <span class="caret"></span></a>
               <ul class="dropdown-menu">
-                <li><a href="{% url 'profile'%}">View Profile</a></li>
-                <li><a href="{% url 'addprofile'%}">Add Profile</a></li>
-                <li><a href="/accounts/password/change/">Change Password</a></li>
+                <li><a href="{% url 'profile'%}" style="color: white; background-color: #ff006e;">View Profile</a></li>
+                <li><a href="{% url 'addprofile'%}" style="color: white; background-color: #ff006e;">Add Profile</a></li>
+                <li><a href="/accounts/password/change/" style="color: white; background-color: #ff006e;">Change Password</a></li>
                 <li role="separator" class="divider"></li>
-                <li><a href="/accounts/logout/">Log Out</a></li>
+                <li><a href="/accounts/logout/" style="color: white; background-color: #ff006e;">Log Out</a></li>
               </ul>
             </li>
         </ul>
@@ -38,11 +38,11 @@
        
         <ul class="nav navbar-nav navbar-right">
           <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">SIGN UP <span class="caret"></span></a>
+            <a href="#" class="dropdown-toggle" style="color: white;" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">SIGN UP <span class="caret"></span></a>
             <ul class="dropdown-menu">
-              <li><a href="/accounts/signup/">Sign Up</a></li>
-              <li><a href="/accounts/login">Log in</a></li>
-              <li><a href="/accounts/password/reset/">Reset Password</a></li>
+              <li><a href="/accounts/signup/" style="color: white; background-color: #ff006e;">Sign Up</a></li>
+              <li><a href="/accounts/login" style="color: white; background-color: #ff006e;">Log in</a></li>
+              <li><a href="/accounts/password/reset/" style="color: white; background-color: #ff006e;">Reset Password</a></li>
             </ul>
           </li>
         </ul>

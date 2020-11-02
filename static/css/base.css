@@ -3,3 +3,9 @@
     padding: 10px;
     margin:20px;
 }
+body {
+    background-image: url(../images/index.jpeg);
+    height: 80vh;
+    background-attachment: fixed;
+    background-size: cover;
+}

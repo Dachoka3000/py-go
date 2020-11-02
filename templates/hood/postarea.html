@@ -1,15 +1,19 @@
 {% extends 'hood/base.html' %}
+{% load cloudinary %}
+
 
 {% block content %}
 <div class="container">
     <div class="row">
-        {% if postups %}
+        <div class="col-md-8">
+            {% if postups %}
             {% for postup in postups%}
             <div class="panel panel-default">
                 <div class="panel-heading">
                     <h3>{{postup.title}}</h3>
                 </div>
                 <div class="panel-body">
+                    <img src="{{postup.image.url}}" alt="img" >
                     <p>{{postup.content}}</p>
                 </div>
                 <div class="panel-footer">
@@ -17,9 +21,11 @@
                 </div>
             </div>
             {% endfor %}
-        {% else %}
-        <h3>This location does not have any posts or alerts yet.</h3>
-        {% endif %}
+            {% else %}
+            <h3>This location does not have any posts or alerts yet.</h3>
+            {% endif %}
+        </div>
+        
     </div>
 </div>
 {% endblock %}

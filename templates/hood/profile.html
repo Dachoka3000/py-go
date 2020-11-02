@@ -6,20 +6,23 @@
 {% if profile %}
 <div class="container">
     <div class="row">
-        <div class="panel panel-default">
-            <div class="panel-heading" style="background-color: #ff006e;">
-                <h2>{{current_user.username}}</h2>
-            </div>
-            <div class="panel-body">
-                <img src="{{current_user.userprofile.avatar.url}}" alt="dpic" class="rounded-circle" width="150" height="150">
-                {% autoescape on %}
-                <h3>{{user.profile.bio | safe}}</h3>
-                {% endautoescape%}
-            </div>
-            <div class="panel-footer" style="background-color: #ff006e;">
-                <h4>{{current_user.email}}</h4>
+        <div class="col-md-8">
+            <div class="panel panel-default">
+                <div class="panel-heading" style="background-color: #ff006e;">
+                    <h2>{{current_user.username}}</h2>
+                </div>
+                <div class="panel-body">
+                    <img src="{{current_user.userprofile.avatar.url}}" alt="dpic" class="rounded-circle" width="150" height="150">
+                    {% autoescape on %}
+                    <h3>{{user.profile.bio | safe}}</h3>
+                    {% endautoescape%}
+                </div>
+                <div class="panel-footer" style="background-color: #ff006e;">
+                    <h4>{{current_user.email}}</h4>
+                </div>
             </div>
         </div>
+       
     </div>
 </div>
 {% else %}
@@ -29,5 +32,68 @@
     </div>
 </div>
 {% endif %}
+<p></p>
+<div class="container">
+    <div class="row">
+        <div class="col-md-8">
+            {% if businesses %}
+            <h3 class="text-center" style="text-decoration: underline;">Your Businesses</h3>
+            {% for business in businesses %}
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title" style="font-weight: bolder;">{{business.name}}</h4>
+                        <p class="card-text">{{business.description}}</p>
+
+                    </div>
+                    <div class="card-footer">
+                        <h5>Location: {{business.area}}</h5>
+                        <ul>
+                            <li>Owned by: {{business.owner}}</li>
+                            <li>Contact: {{business.email}}</li>
+                        </ul>
+                    </div>
+                </div>
+
+            {% endfor %}
+        {% else %}
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <h3>You Have Not Added Any Businesses <span><a href="{%url 'addbusiness'%}">Add one</a></span></h3>
+                </div>
+            </div>
+        </div>
+
+        {% endif %}
+        </div>
+    </div>
+</div>
+<p></p>
+<div class="container">
+    <div class="row">
+        <div class="col-md-8">
+            {% if posts %}
+            {% for postup in posts%}
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3>{{postup.title}}</h3>
+                </div>
+                <div class="panel-body">
+                    <img src="{{postup.image.url}}" alt="img" >
+                    <p>{{postup.content}}</p>
+                </div>
+                <div class="panel-footer">
+                    <h4>Posted by: {{postup.poster}} on {{postup.date_added}}</h4>
+                </div>
+            </div>
+            {% endfor %}
+            {% else %}
+            <h3>You have not uploaded any posts yet.</h3>
+            {% endif %}
+        </div>
+       
+    </div>
+</div>
+
 
 {% endblock %}
