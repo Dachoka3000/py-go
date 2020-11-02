@@ -86,6 +86,9 @@ def addpost(request,hood_id):
             new_post.poster=current_user
             new_post.save()
             return redirect('posts')
+        else:
+            form=AddPostForm()
+    return render(request, 'hood/addpost.html',{"form":form,"hood":hood,"current_user":current_user})
 
 
             
