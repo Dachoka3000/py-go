@@ -9,8 +9,8 @@ from .filters import BusinessFilter
 
 # Create your views here.
 def homepage(request):
-    
-    return render(request,'hood/home.html')
+    hoods = Hood.objects.all()
+    return render(request,'hood/home.html', {"hoods":hoods})
 
 def about(request):
     return render(request,'hood/about.html')
@@ -71,6 +71,23 @@ def posts(request,hood_id):
     hood=Hood.objects.get(id=hood_id)
     postups=hood.posts.all()
     return render(request, 'hood/postarea.html',{"hood":hood,"postups":postups})
+
+@login_required(login_url='/accounts/login/')
+def addpost(request,hood_id):
+    hood = Hood.objects.get(id=hood_id)
+    current_user=request.user
+    form=AddPostForm()
+
+    if request.method == 'POST':
+        form = AddPostForm(request.POST,request.FILES)
+        if form.is_valid():
+            new_post = form.save(commit=False)
+            new_post.area = hood
+            new_post.poster=current_user
+            new_post.save()
+            return redirect('posts')
+
+
             
 
 # def addprofile(request):
