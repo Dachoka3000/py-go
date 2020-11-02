@@ -20,22 +20,6 @@ class Hood(models.Model):
     def delete_neighbourhood(self):
         self.delete()
 
-    def __str__(self):
-        return self.name
-
-class Business(models.Model):
-    name = models.CharField(max_length=300)
-    description = models.TextField(blank=True)
-    email = models.EmailField(max_length=254,blank=True)
-    owner = models.ForeignKey(User, on_delete = models.CASCADE, related_name="businesses")
-    area = models.ForeignKey(Hood, on_delete=models.CASCADE, related_name="businesses",null=True)
-
-    def save_business(self):
-        self.save()
-
-    def delete_business(self):
-        self.delete()
-    
     @classmethod
     def find_neighbourhoood(cls,neighbourhod_id):
         found_neighbourhood=cls.objects.filter(id=neighbourhod_id)
@@ -52,6 +36,39 @@ class Business(models.Model):
         return hood
 
     def __str__(self):
+        return self.name
+
+class Business(models.Model):
+    name = models.CharField(max_length=300)
+    description = models.TextField(blank=True)
+    email = models.EmailField(max_length=254,blank=True)
+    owner = models.ForeignKey(User, on_delete = models.CASCADE, related_name="businesses")
+    area = models.ForeignKey(Hood, on_delete=models.CASCADE, related_name="businesses",null=True)
+
+    def create_business(self,name,description,email,owner,area):
+        new_business=Business.objects.create(name=name,description=description,email=email,owner=owner,area=area)
+        return new_business
+
+
+    def save_business(self):
+        self.save()
+
+    def delete_business(self):
+        self.delete()
+
+    @classmethod
+    def find_business(cls,business_id):
+        found_business=cls.objects.filter(id=business_id)
+        return found_business
+
+    @classmethod
+    def update_business(cls,name,new_name):
+        biz=cls.objects.filter(name=name).update(name=new_name)
+        return biz
+    
+  
+
+    def __str__(self):
         return self.name  
 
 
@@ -60,6 +77,12 @@ class Profile(models.Model):
     bio = models.TextField()
     hood = models.ForeignKey(Hood, on_delete = models.CASCADE, related_name="userprofiles")
     user = models.OneToOneField(User, on_delete=models.CASCADE, related_name="userprofle")
+
+    def save_profile(self):
+        self.save()
+
+    def delete_profile(self):
+        self.delete()
 
     def __str__(self):
         return self.user.username
@@ -72,6 +95,12 @@ class Post(models.Model):
     image= CloudinaryField("image",blank=True, null=True)
     date_added=models.DateField(auto_now_add=True,null=True)
 
+    def save_post(self):
+        self.save()
+
+    def delete_post(self):
+        self.delete()
+
     def __str__(self):
         return self.title
 
@@ -81,6 +110,12 @@ class Contact(models.Model):
     policemail=models.EmailField(max_length=254)
     hospitalnumber=models.CharField(max_length=300)
     hospitalmail=models.EmailField(max_length=254)
+
+    def save_contact(self):
+        self.save()
+
+    def delete_contact(self):
+        self.delete()
 
     def __str__(self):
         return self.area.name
