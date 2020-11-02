@@ -33,7 +33,7 @@ def addprofile(request):
 @login_required(login_url='/accounts/login/')
 def profile(request):
     current_user = request.user
-    profile = Profile.objects.get(user=current_user)
+    profile = Profile.objects.filter(user=current_user)
     businesses = Business.objects.filter(owner=current_user)
     posts = Post.objects.filter(poster=current_user)
     return render(request,'hood/profile.html',{"current_user":current_user,"profile":profile,"businesses":businesses,"posts":posts})

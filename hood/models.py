@@ -14,6 +14,9 @@ class Hood(models.Model):
         new_neighbourhood= Hood.objects.create(name=name,location=location,occupants=occupants,adder=adder)
         return new_neighbourhood
 
+    def save_neighbourhood(self):
+        self.save()
+
     def delete_neighbourhood(self):
         self.delete()
 
@@ -26,6 +29,15 @@ class Business(models.Model):
     email = models.EmailField(max_length=254,blank=True)
     owner = models.ForeignKey(User, on_delete = models.CASCADE, related_name="businesses")
     area = models.ForeignKey(Hood, on_delete=models.CASCADE, related_name="businesses",null=True)
+
+    def save_business(self):
+        self.save()
+
+    def delete_business(self):
+        self.delete()
+    
+    # @classmethod
+    # def
 
     def __str__(self):
         return self.name  
