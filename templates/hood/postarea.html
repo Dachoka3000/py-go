@@ -1,0 +1,25 @@
+{% extends 'hood/base.html' %}
+
+{% block content %}
+<div class="container">
+    <div class="row">
+        {% if postups %}
+            {% for postup in postups%}
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3>{{postup.title}}</h3>
+                </div>
+                <div class="panel-body">
+                    <p>{{postup.content}}</p>
+                </div>
+                <div class="panel-footer">
+                    <h4>Posted by: {{postup.poster}} on {{postup.date_added}}</h4>
+                </div>
+            </div>
+            {% endfor %}
+        {% else %}
+        <h3>This location does not have any posts or alerts yet.</h3>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

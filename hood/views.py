@@ -85,10 +85,17 @@ def addpost(request,hood_id):
             new_post.area = hood
             new_post.poster=current_user
             new_post.save()
-            return redirect('posts')
+            return redirect('home')
         else:
             form=AddPostForm()
     return render(request, 'hood/addpost.html',{"form":form,"hood":hood,"current_user":current_user})
+
+@login_required(login_url='/accounts/login/')
+def hoodcontacts(request,hood_id):
+    hood = Hood.objects.get(id=hood_id)
+    contacters = hood.contacts.all()
+    return render(request,'hood/contacts.html',{"hood":hood,"contacters":contacters})
+
 
 
             

@@ -13,6 +13,9 @@ import os
 import dj_database_url
 from pathlib import Path
 from decouple import config,Csv
+import cloudinary
+import cloudinary.uploader
+import cloudinary.api
 
 MODE=config("MODE", default="dev")
 SECRET_KEY = config('SECRET_KEY')
@@ -68,15 +71,22 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.sites',
 
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
+    'cloudinary_storage',
+    'cloudinary',
+    'django_filters',
+    'crispy_forms',
+    'bootstrap3',
     'hood.apps.HoodConfig',
 ]
 
 SITE_ID = 1
 ACCOUNT_EMAIL_VERIFICATION = 'none'
+CRISPY_TEMPLATE_PACK='bootstrap3'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -143,6 +153,12 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+cloudinary.config (
+    cloud_name = config('CLOUD_NAME'),
+    api_key = config('CLOUD_API_KEY'),
+    api_secret = config('CLOUD_API_SECRET'),
+)
+
 
 # Internationalization
 # https://docs.djangoproject.com/en/3.1/topics/i18n/
@@ -170,6 +186,8 @@ STATICFILES_DIRS = (
 )
 
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
+DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 
 # configuring the location for media
 MEDIA_URL = '/media/'

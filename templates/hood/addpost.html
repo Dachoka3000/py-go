@@ -1,0 +1,21 @@
+{% extends 'hood/base.html' %}
+{% load cloudinary %}
+
+{% block content %}
+<div class="container">
+    <div class="panel">
+        <div class="panel-heading">
+            <h2>Add Your Post</h2>
+        </div>
+        <div class="panel-body">
+            <form action="{% url 'addpost' hood_id=hood.id%}" method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <input type="submit" value="Add">
+            </form>
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}
