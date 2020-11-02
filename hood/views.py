@@ -5,7 +5,7 @@ from django.contrib.auth.models import User
 from .forms import AddProfileForm,AddBusinessForm,AddPostForm
 from .models import Profile,Post,Business,Hood,Contact
 from cloudinary.forms import cl_init_js_callbacks      
-
+from .filters import BusinessFilter
 
 # Create your views here.
 def homepage(request):
@@ -57,6 +57,14 @@ def addbusiness(request):
 def business(request):
     businesses=Business.objects.all()
     return render(request,'hood/business.html', {"businesses":businesses})
+
+@login_required(login_url='/accounts/login/')
+def filterbusiness(request):
+    if request is None:
+        return Business.objects.none()
+    filter_list = Business.objects.all()
+    business_filter = BusinessFilter(request.GET, queryset=filter_list)
+    return render(request,'searchbusiness.html',{"filter":business_filter})
             
 
 # def addprofile(request):
