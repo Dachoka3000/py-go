@@ -99,7 +99,8 @@ def hoodcontacts(request,hood_id):
 @login_required(login_url='/accounts/login/')
 def onlylocal(request):
     current_user=request.user
-    userlocal=current_user.userprofle.hood
+    # userlocal=current_user.userprofle.hood
+    userlocal= Hood.objects.filter()
     contacters=userlocal.contacts.all()
     businesses=userlocal.businesses.all()
     return render(request,'hood/local.html',{"userlocal":userlocal,"current_user":current_user,"contacters":contacters,"businesses":businesses})

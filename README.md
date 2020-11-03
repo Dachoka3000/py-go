@@ -23,13 +23,19 @@ This is  a web application that keeps users in the loop about what is happening 
 ## BDD
 Open the webpage on your browser using the live link provided. 
 * Sign up for an account by clicking on the signup tab in the navbar and filling the form. Once complete, you will be logged into your account and your name will be displayed on the navbar.
+* Once logged in, fill in the profile form and also add where you live. When done, you will be redirected to a new local page showcasing all info about that page
+* * ![Alt text](./static/images/local.png?raw=true "Optional Title")
+
 * On the homepage, view the locations.
 * To see the emergency contact of a location, press the contacts button
-* To view the posts of a location, click the posts button
+* * ![Alt text](./static/images/contacts.png?raw=true "Optional Title")
+
+* To view the posts of a location, click the view area posts button on the mini navbar in the local page
 * To add a post, click the add post button
-* To view businesses, click the view business tab on the navbar
-* To search a business, click the search business tab on the navbar
-* To add a business, click the add business tab on the navbaar
+* To view businesses, click the view all businesses button from resulting dropdown tab on the navbar
+* To search a business, click the search businesses tab on the navbar dropdown
+* * ![Alt text](./static/images/search.png?raw=true "Optional Title")
+* To add a business, click the add business tab on the dropdown tab named businesses
 
 * If you do not have a profile, click on the add profile link in the dropdown and fill the form to add your profile
 * Click on view profile from the same dropdown to see your profile
