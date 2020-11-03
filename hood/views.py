@@ -1,11 +1,13 @@
 from django.shortcuts import render,redirect
-from django.http import HttpResponse
+from django.http import HttpResponse,Http404
 from django.contrib.auth.decorators import login_required,permission_required
 from django.contrib.auth.models import User
 from .forms import AddProfileForm,AddBusinessForm,AddPostForm
 from .models import Profile,Post,Business,Hood,Contact
 from cloudinary.forms import cl_init_js_callbacks      
 from .filters import BusinessFilter
+from django.core.exceptions import ObjectDoesNotExist
+
 
 # Create your views here.
 def homepage(request):
@@ -98,12 +100,15 @@ def hoodcontacts(request,hood_id):
 
 @login_required(login_url='/accounts/login/')
 def onlylocal(request):
-    current_user=request.user
-    # userlocal=current_user.userprofle.hood
-    userlocal= Hood.objects.filter()
-    contacters=userlocal.contacts.all()
-    businesses=userlocal.businesses.all()
-    return render(request,'hood/local.html',{"userlocal":userlocal,"current_user":current_user,"contacters":contacters,"businesses":businesses})
+    try:
+        current_user=request.user
+        userlocal=current_user.userprofle.hood
+        # userlocal= Profile.objects.filter(hood=current_user.userprofle.hood)
+        contacters=userlocal.contacts.all()
+        businesses=userlocal.businesses.all()
+        return render(request,'hood/local.html',{"userlocal":userlocal,"current_user":current_user,"contacters":contacters,"businesses":businesses})
+    except ObjectDoesNotExist:
+        return render(request, 'hood/noprofile.html')
 
 
 

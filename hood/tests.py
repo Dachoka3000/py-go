@@ -110,3 +110,10 @@ class ProfileTestCase(TestCase):
         self.profile.delete_profile()
         profiles=Profile.objects.all()
         self.assertTrue(len(profiles)==0)
+
+class BusinessTestClass(TestCase):
+    '''
+    TestCase class that runs tests for business model objects
+    '''
+
+    def
