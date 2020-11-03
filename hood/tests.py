@@ -48,6 +48,34 @@ class ContactTestCase(TestCase):
         contacts=Contact.objects.all()
         self.assertTrue(len(contacts)==0)
 
+class PostTestCase(TestCase):
+    '''
+    Test case that runs test cases for post model objects
+    '''
+    def setUp(self):
+        User = get_user_model()
+        self.daisy = User(username = "daisy", email="daisy@email.com", password = "password")
+        self.daisy.save()
+        self.hood = Hood(name="local",location="area",occupants=5,adder=self.daisy)
+        self.hood.save()
+        self.post=Post(poster=self.daisy,area=self.hood,title="testing title",content="this is a test")
+
+    def test_instance(self):
+        self.assertTrue(isinstance(self.post,Post))
+
+    def test_save_method(self):
+        self.post.save_post()
+        posts=Post.objects.all()
+        self.assertTrue(len(posts)>0)
+
+    def test_delete_method(self):
+        self.post.save_post()
+        self.post=Post.objects.get(title="testing title")
+        self.post.delete_post()
+        posts=Post.objects.all()
+        self.assertTrue(len(posts)==0)
+
+
 
 class ProfileTestCase(TestCase):
     '''
