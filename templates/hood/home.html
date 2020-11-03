@@ -3,7 +3,7 @@
 {% block content %}
 <div class="container">
     <div class="row">
-        <h1>Explore A Location</h1>
+        <h1 class="text-center">Our Locations</h1>
         {% for hood in hoods%}
         <div class="col-md-4">
             <div class="card">
@@ -13,8 +13,7 @@
                 <div class="card-body">
                     <h4>{{hood.occupants}} residents live here!</h4>
                     <button class="btn btn-primary"><a href="{% url 'contacts' hood_id=hood.id%}" style="color: white;">View Contacts</a></button><br><br>
-                    <button class="btn btn-primary"><a href="{% url 'posts' hood_id=hood.id%}" style="color: white;">View Posts</a></button><br><br>
-                    <button class="btn btn-primary"><a href="{% url 'addpost' hood_id=hood.id%}" style="color: white;">Add a post</a></button>
+                    
                 </div>
             </div>
         </div>

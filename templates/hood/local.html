@@ -1,0 +1,98 @@
+{% extends 'hood/base.html' %}
+
+{% block content %}
+{%if userlocal %}
+<div class="container">
+
+    <div class="row">
+        <div class="col-md-7" style="border-bottom: 2px solid black;">
+            <h2 class="text-center">{{userlocal.name}}</h2>
+            <h3 class="text-center">Found in {{userlocal.location}}</h3>
+            <h4 class="text-center">Home to {{userlocal.occupants}} residents</h4>
+        </div>
+    </div>
+    <p></p>
+    <div class="row">
+        <div class="col-md-7">
+            <nav class="nav nav-pills flex-column flex-sm-row" >
+                <li style="color: white; background-color: #ff006e; margin: 3px;"><a class="flex-sm-fill text-sm-center nav-link active" href="{% url 'addbusiness'%}" style="color: white;">Add business</a></li>
+                <li style="color: white; background-color: #ff006e; margin: 3px;"><a class="flex-sm-fill text-sm-center nav-link" href="{% url 'posts' hood_id=userlocal.id%}" style="color: white;">View Area Posts</a></li>
+                <li style="color: white; background-color: #ff006e; margin: 3px;"><a class="flex-sm-fill text-sm-center nav-link" href="{% url 'addpost' hood_id=userlocal.id%}" style="color: white;">Add a post</a></li>
+                <a class="flex-sm-fill text-sm-center nav-link" href="#"></a>
+            </nav>
+        </div>
+    </div>
+    <p></p>
+    <div class="row">
+        <div class="col-md-7">
+            <h2 class="text-center">Emergency Contacts</h2>
+            {% for contacter in contacters%}
+                <div class="panel-group">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h4>Police Contacts</h4>
+                        </div>
+                        <div class="panel-body">
+                            <h4>{{contacter.policenumber}}</h4>
+                            <h4>{{contacter.policemail}}</h4>
+                        </div>
+                    </div>
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h4>Hospital Contacts</h4>
+                        </div>
+                        <div class="panel-body">
+                            <h4>{{contacter.hospitalnumber}}</h4>
+                            <h4>{{contacter.hospitalmail}}</h4>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+    <p></p>
+    <div class="row">
+        <div class="col-md-8">
+            {% if businesses %}
+                <h3 style="text-decoration: underline;" class="text-center">Local area businesses</h3>
+                {% for business in businesses %}
+                    <div class="card">
+                        <div class="card-body">
+                            <h4 class="card-title" style="font-weight: bolder;">{{business.name}}</h4>
+                            <p class="card-text">{{business.description}}</p>
+
+                        </div>
+                        <div class="card-footer">
+                            <h5>Location: {{business.area}}</h5>
+                            <ul>
+                                <li>Owned by: {{business.owner}}</li>
+                                <li>Contact: {{business.email}}</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                {% endfor %}
+            {% else %}
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6">
+                        <h3>Oh No! There are no local area businesses to display. <span><a href="{%url 'addbusiness'%}">Add one</a></span></h3>
+                    </div>
+                </div>
+            </div>
+
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% else %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-8">
+            <h3>Please <span><a href="{% url 'addprofile'%}"> add a profile</a> to view this page</span></h3>
+        </div>
+    </div>
+</div>
+{% endif %}
+
+{% endblock %}

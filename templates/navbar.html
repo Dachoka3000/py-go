@@ -19,9 +19,16 @@
         {%if user.is_authenticated%}
         
         <ul class="nav navbar-nav navbar-right" style="color: wheat;">
-            <li><a href="{%url 'business' %}" style="color: white;">View Businesses</a></li>
-            <li><a href="{% url 'searchbusiness'%}" style="color: white;">Search Businesses</a></li>
-            <li><a href="{%url 'addbusiness'%}" style="color: white;">Upload Business</a></li>
+            <li><a href="{% url 'local'%}" style="color: white;">Your Hood</a></li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" style="color: white;" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Businesses <span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><a href="{% url 'business'%}" style="color: white; background-color: #ff006e;">View All Businesses</a></li>
+                <li><a href="{% url 'searchbusiness'%}" style="color: white; background-color: #ff006e;">Search Businesses</a></li>
+                <li><a href="{% url 'addbusiness' %}" style="color: white; background-color: #ff006e;">Upload Business</a></li>
+               
+              </ul>
+            </li>
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" style="color: white;" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{user.username}} <span class="caret"></span></a>
               <ul class="dropdown-menu">

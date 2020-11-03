@@ -25,7 +25,7 @@ def addprofile(request):
            new_profile= form.save(commit=False)
            new_profile.user=current_user
            new_profile.save()
-           return redirect('profile')
+           return redirect('local')
     else:
         form=AddProfileForm()
     return render(request, 'hood/addprofile.html',{"form":form})
@@ -85,7 +85,7 @@ def addpost(request,hood_id):
             new_post.area = hood
             new_post.poster=current_user
             new_post.save()
-            return redirect('home')
+            return redirect('local')
         else:
             form=AddPostForm()
     return render(request, 'hood/addpost.html',{"form":form,"hood":hood,"current_user":current_user})
@@ -95,6 +95,14 @@ def hoodcontacts(request,hood_id):
     hood = Hood.objects.get(id=hood_id)
     contacters = hood.contacts.all()
     return render(request,'hood/contacts.html',{"hood":hood,"contacters":contacters})
+
+@login_required(login_url='/accounts/login/')
+def onlylocal(request):
+    current_user=request.user
+    userlocal=current_user.userprofle.hood
+    contacters=userlocal.contacts.all()
+    businesses=userlocal.businesses.all()
+    return render(request,'hood/local.html',{"userlocal":userlocal,"current_user":current_user,"contacters":contacters,"businesses":businesses})
 
 
 
