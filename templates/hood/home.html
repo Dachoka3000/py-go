@@ -10,11 +10,7 @@
                 <div class="card-header">
                     <h3>{{hood.name}} in {{hood.location}}</h3>
                 </div>
-                <div class="card-body">
-                    <h4>{{hood.occupants}} residents live here!</h4>
-                    <button class="btn btn-primary"><a href="{% url 'contacts' hood_id=hood.id%}" style="color: white;">View Contacts</a></button><br><br>
-                    
-                </div>
+               
             </div>
         </div>
         {%endfor%}
