@@ -27,13 +27,14 @@ Open the webpage on your browser using the live link provided.
 * * ![Alt text](./static/images/local.png?raw=true "Optional Title")
 
 * On the homepage, view the locations.
+* To view information about an area, go to Your Hood tab on the navbar. If you haven't added a profile, you will be asked to add one
 * To see the emergency contact of a location, press the contacts button
 * * ![Alt text](./static/images/contacts.png?raw=true "Optional Title")
 
-* To view the posts of a location, click the view area posts button on the mini navbar in the local page
+* To view the posts of a location, click the view area posts button on the mini navbar in the Your Hood page
 * To add a post, click the add post button
-* To view businesses, click the view all businesses button from resulting dropdown tab on the navbar
-* To search a business, click the search businesses tab on the navbar dropdown
+* To view businesses, click the view all businesses button from resulting dropdown businesses tab on the navbar
+* To search a business, click the search businesses tab on the navbar businesses dropdown
 * * ![Alt text](./static/images/search.png?raw=true "Optional Title")
 * To add a business, click the add business tab on the dropdown tab named businesses
 

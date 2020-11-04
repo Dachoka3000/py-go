@@ -34,5 +34,10 @@ class AddPostForm(forms.ModelForm):
     class Meta:
         model=Post
         exclude=['poster']
+
+class ChangeLocationForm(forms.ModelForm):
+    class Meta:
+        model=Profile
+        fields = ['hood']
         
 

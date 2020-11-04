@@ -16,6 +16,7 @@ urlpatterns = [
     path('addposts/<int:hood_id>/',views.addpost,name='addpost'),
     path('contacts/<int:hood_id>/',views.hoodcontacts,name='contacts'),
     path('local/', views.onlylocal, name='local'),
+    path('changelocation/',views.changelocation, name='changelocation'),
 ]
 if settings.DEBUG:
     urlpatterns+=static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)
