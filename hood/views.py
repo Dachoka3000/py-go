@@ -2,7 +2,7 @@ from django.shortcuts import render,redirect
 from django.http import HttpResponse,Http404
 from django.contrib.auth.decorators import login_required,permission_required
 from django.contrib.auth.models import User
-from .forms import AddProfileForm,AddBusinessForm,AddPostForm
+from .forms import AddProfileForm,AddBusinessForm,AddPostForm,ChangeLocationForm
 from .models import Profile,Post,Business,Hood,Contact
 from cloudinary.forms import cl_init_js_callbacks      
 from .filters import BusinessFilter
@@ -109,6 +109,26 @@ def onlylocal(request):
         return render(request,'hood/local.html',{"userlocal":userlocal,"current_user":current_user,"contacters":contacters,"businesses":businesses})
     except ObjectDoesNotExist:
         return render(request, 'hood/noprofile.html')
+
+@login_required(login_url='accounts/login/')
+def changelocation(request):
+    try:
+        current_user=request.user
+
+        if request.method=="POST":
+            form = ChangeLocationForm(request.POST)
+            if form.is_valid():
+                new_location=form.cleaned_data['hood']
+                new_area=Profile.objects.get(user=current_user)
+                new_area.hood=new_location
+                new_area.save()
+                return redirect('local')
+
+        else:
+            form=ChangeLocationForm()
+        return render(request, 'hood/changelocation.html',{"form":form})
+    except ObjectDoesNotExist:
+            return render(request, 'hood/noprofile.html')
 
 
 
