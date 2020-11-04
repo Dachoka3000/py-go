@@ -28,8 +28,6 @@ Open the webpage on your browser using the live link provided.
 
 * On the homepage, view the locations.
 * To view information about an area, go to Your Hood tab on the navbar. If you haven't added a profile, you will be asked to add one
-* To see the emergency contact of a location, press the contacts button
-* * ![Alt text](./static/images/contacts.png?raw=true "Optional Title")
 
 * To view the posts of a location, click the view area posts button on the mini navbar in the Your Hood page
 * To add a post, click the add post button
@@ -41,6 +39,7 @@ Open the webpage on your browser using the live link provided.
 * If you do not have a profile, click on the add profile link in the dropdown and fill the form to add your profile
 * Click on view profile from the same dropdown to see your profile
 * * ![Alt text](./static/images/profile.png?raw=true "Optional Title")
+* To change your location when you move out, click on the change location tab in the navbar and choose your new location in the form. You will be redirected to your new location page.
 * Once done, click on the logout tab to logout
 ## Contacts
 Feel free to contact me at machokadaisy25@gmail.com. For any contributions, please visit https://github.com/MachokaDaisy/py-go.git
